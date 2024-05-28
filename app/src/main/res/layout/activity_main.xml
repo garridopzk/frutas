@@ -10,6 +10,7 @@
     tools:ignore="ExtraText">
 
     <TextView
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total:0.00"
@@ -17,10 +18,12 @@
         android:layout_marginTop="12dp"/>
 
     <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below:"@id/total"
+        android:layout_below="@id/total"
         android:orientation="horizontal"
-        android:layout_marginTop="15"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="-130dp"/>
 
 </LinearLayout>
