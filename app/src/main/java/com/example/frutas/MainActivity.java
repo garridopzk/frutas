@@ -15,30 +15,33 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     ListView listview;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        listview=(ListView)findViewById(R.id.listview);
+            listview=(ListView)findViewById(R.id.listview);
+            String[] nombres={"Fresa","Mango","Papaya","Pera","Platanos"};
+            String[] precios ={"40","50","30","70","90"};
+            Integer[]  idimage= {R.drawable.fresa,R.drawable.mango,R.drawable.papaya,R.drawable.pera,R.drawable.platanos};
+            Adaptador adapter = new Adaptador(this,nombres,precios,idimage);
+            listview.setAdapter(adapter);
 
-        final String[] frutas ={"Pera","Fresa","Mango","Papaya","Platanos"};
-        final int[] frutas = {R.drawable.Pera_3,R.drawable.fresa,R.drawable.mango,R.drawable.papaya,R.drawable.platanos};
-        final ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,frutas);
-        listview.setAdapter(adapter);
+            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getApplicationContext(),"Seleccionaste el elemento: "+nombres[position], Toast.LENGTH_LONG).show();
+                }
+            });
+            listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(getApplicationContext(),": "+nombres[position]+"con precio de :$"+precios[position], Toast.LENGTH_LONG).show();
+                    return true;
+                }
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"Seleccionaste el elemento: "+frutas[position], Toast.LENGTH_LONG).show();
-            }
-        });
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return false;
-            }
-        });
+            });
+        }
     }
-}
