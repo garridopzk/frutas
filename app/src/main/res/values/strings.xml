@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">frutas</string>
-</resources>
+
+        <string-array name="nombres">
+            <item>Fresa</item>
+            <item>Mango</item>
+            <item>Papaya</item>
+            <item>Pera</item>
+            <item>Platanos</item>
+        </string-array>
+
+        <string-array name="precios">
+            <item>40</item>
+            <item>50</item>
+            <item>30</item>
+            <item>70</item>
+            <item>90</item>
+        </string-array>
+    </resources>
+
+
